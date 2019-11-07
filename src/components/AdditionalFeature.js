@@ -4,10 +4,11 @@ import { buyItem } from '../actions/actions'
 
 const AdditionalFeature = props => {
 
-  const Dispatch = useDispatch();
+  // NEW REDUX HOOKS CODE
+  const dispatch = useDispatch();
   
   const buyItem = item => {
-    Dispatch({type:"ADD_ITEM",payload:item})
+    dispatch({type:"ADD_ITEM",payload:item})
   };
 
   return (
@@ -19,11 +20,12 @@ const AdditionalFeature = props => {
   );
 };
 
-// const mapDispatchToProps = {
-//   buyItem: Dispatch({type:"ADD_ITEM",payload:item})
-// };
+// OLD HOC CODE
+const mapDispatchToProps = {
+  buyItem
+};
 
 export default connect(
   state => state,
-  // mapDispatchToProps
+  mapDispatchToProps
 )(AdditionalFeature);

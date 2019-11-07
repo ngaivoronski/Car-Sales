@@ -4,10 +4,11 @@ import { removeFeature } from '../actions/actions'
 
 const AddedFeature = props => {
 
-  const Dispatch = useDispatch();
+  // NEW REDUX HOOKS CODE
+  const dispatch = useDispatch();
   
   const removeFeature = item => {
-    Dispatch({type:"REMOVE_ITEM",payload:item})
+    dispatch({type:"REMOVE_ITEM",payload:item})
   };
 
 
@@ -20,4 +21,13 @@ const AddedFeature = props => {
   );
 };
 
-export default AddedFeature;
+
+// OLD HOC CODE
+const mapDispatchToProps = {
+  removeFeature
+};
+
+export default connect(
+  state => state,
+  mapDispatchToProps
+)(AddedFeature);
